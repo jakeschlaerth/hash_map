@@ -52,8 +52,7 @@ def top_words(source, number):
         for line in f:
             words = rgx.findall(line)
             for w in words:
-                w=w.lower()
-
+                w = w.lower()
                 if ht.contains_key(w):
                     # inc count
                     ht.put(w, ht.get(w) +1)
