@@ -83,8 +83,9 @@ def second_item(tup):
 
 def sort_tuples(tuple_list):
     """
+    sorts a list of tuples in sorted order according to second element of each tuple
     :param tuple_list: list of tuples
-    :return: list of tuples in sorted order according to second element of each tuple
+    :return: none, lists are mutable
     """
     tuple_list.sort(key=second_item, reverse=True)
 
