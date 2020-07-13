@@ -40,7 +40,7 @@ def top_words(source, number):
         A list of tuples of the form (word, count), sorted by most common word. (e.g. [("a", 23), ("the", 20), ("it", 10)])
     """
 
-    keys = set()
+    # keys = set()
 
     ht = HashMap(25,hash_function_2)
 
@@ -67,7 +67,7 @@ def top_words(source, number):
                 tuple_list.append((current.key, current.value))
                 current = current.next
         sort_tuples(tuple_list)
-        return tuple_list
+        return tuple_list[:number]
 
 
 def second_item(tup):
@@ -96,4 +96,4 @@ def sort_tuples(tuple_list):
 
 
 
-print(top_words("alice.txt", 10))  # COMMENT THIS OUT WHEN SUBMITTING TO GRADESCOPE
+# print(top_words("alice.txt", 10))  # COMMENT THIS OUT WHEN SUBMITTING TO GRADESCOPE

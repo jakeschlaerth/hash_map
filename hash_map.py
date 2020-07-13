@@ -177,8 +177,8 @@ class HashMap:
             key: they key to search for and remove along with its value
         """
         index = self._hash_function(key) % self.capacity
-        self._buckets[index].remove(key)
-        self.size -= 1
+        if self._buckets[index].remove(key):
+            self.size -= 1
 
     def contains_key(self, key):
         """
@@ -244,31 +244,46 @@ def hash_function_3(key):
     return sum([ord(x) for x in key])
 
 
-if __name__ == "__main__":
-    mappy = HashMap(32, hash_function_3)
-    mappy.put("John", ["student","red", "big"])
-
-    print("get returns:", mappy.get("John"))
-
-    print("Does mappy contain key \"John\":", mappy.contains_key("John"))
-    print("Does mappy contain key \"Butt\":", mappy.contains_key("Butt"))
-
-    mappy.remove("John")
-    # print(mappy)
-
-    mappy.put("John", ["Johnathan Ramsey","student","red", "big"])
-    for i in range(0, 100):
-        mappy.put(str(i), [i, i*2, i*3, i*4])
-    print(mappy)
-    print("there are", mappy.element_count(), "elements in the hash map")
-    print("the capacity is:", mappy.capacity)
-    print("the table load is:",mappy.element_count(), "/", mappy.capacity, "=", mappy.table_load())
-
-    print("there are", mappy.empty_buckets(), "empty buckets")
-
-    print("resizing table")
-    mappy.resize_table(33)
-    print(mappy)
-    print("there are", mappy.element_count(), "elements in the hash map")
+# if __name__ == "__main__":
+#     mappy = HashMap(3, hash_function_3)
+#     mappy2 = HashMap(3, hash_function_1)
+#     mappy.put("John", ["student","red", "big"])
+#     mappy2.put("John", ["student","red", "big"])
+#     mappy2.put("No", [1, 2, 3, 4, 5])
+#     mappy.put("No", [1, 2, 3, 4, 5])
+#     print("mappy:", mappy)
+#     print("mappy2:", mappy2)
+#
+#     mappy2.remove("No")
+#
+#     print("mappy:", mappy)
+#     print("mappy2:", mappy2)
+#
+#     print("get returns:", mappy.get("John"))
+#
+#     print("Does mappy contain key \"John\":", mappy.contains_key("John"))
+#     print("Does mappy contain key \"Butt\":", mappy.contains_key("Butt"))
+#
+#     mappy.remove("John")
+#     print(mappy)
+#
+#     mappy.put("John", ["Johnathan Ramsey","student","red", "big"])
+#     for i in range(0, 1000):
+#         mappy.put(str(i), [i, i*2, i*3, i*4])
+#     print(mappy)
+#     print("there are", mappy.element_count(), "elements in the hash map")
+#     print("the capacity is:", mappy.capacity)
+#     print("the table load is:",mappy.element_count(), "/", mappy.capacity, "=", mappy.table_load())
+#
+#     print("there are", mappy.empty_buckets(), "empty buckets")
+#
+#     print("resizing table")
+#     mappy.resize_table(1000)
+#     print(mappy)
+#     print("there are", mappy.element_count(), "elements in the hash map")
+#     print("there are", mappy.empty_buckets(), "empty buckets")
+#     mappy.resize_table(997)
+#     print("there are", mappy.element_count(), "elements in the hash map")
+#     print("there are", mappy.empty_buckets(), "empty buckets")
 
 
