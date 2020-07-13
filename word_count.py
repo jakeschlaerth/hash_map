@@ -1,3 +1,6 @@
+# author: Jake Schlaerth
+# date: 07/01/2020
+#
 # word_count.py
 # ===================================================
 # Implement a word counter that counts the number of
@@ -11,8 +14,7 @@ from hash_map import HashMap
 
 """
 This is the regular expression used to capture words. It could probably be endlessly
-tweaked to catch more words, but this provides a standard we can test against, so don't
-modify it for your assignment submission.
+tweaked to catch more words, but this provides a standard.
 """
 rgx = re.compile("(\w[\w']*\w|\w)")
 
@@ -47,7 +49,7 @@ def top_words(source, number):
     tuple_list = []
 
     # This block of code will read a file one word as a time and
-    # put the word in `w`. It should be left as starter code.
+    # put the word in `w`.
     with open(source) as f:
         for line in f:
             words = rgx.findall(line)
@@ -87,13 +89,8 @@ def sort_tuples(tuple_list):
     tuple_list.sort(key=second_item, reverse=True)
 
 
-# tup_list = [("s", 1), ("e", 2), ("54", -1)]
-# print(tup_list)
-# print("sorting...")
-# sort_tuples(tup_list)
-# print(tup_list)
-
-
-
-
-# print(top_words("alice.txt", 10))  # COMMENT THIS OUT WHEN SUBMITTING TO GRADESCOPE
+if __name__ == "__main__":
+    # when run as a python3 script, this line will search the local directory for a file called "alice.txt"
+    # and return the 10 most common words in that file utilizing a hash map. Here, the text file is the
+    # entirety of Lewis Carrol's Alice's Adventures in Wonderland
+    print(top_words("alice.txt", 10))
